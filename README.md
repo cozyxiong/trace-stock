@@ -1,18 +1,12 @@
 # TraceStock
 
+体验地址：<https://cozyxiong.github.io/trace-stock/>
+
 Circle（CRCL，纽约证券交易所，美元）的股价异动解释原型。页面包含日 K、事件时间线和可关闭的 Agent。
 
 行情是一份本地日线快照，不是打开页面时的实时请求。交易日从上市后的第一个完整交易日 2025-06-06 起，到最近一个已完成交易日 2026-10-09 止。上市当日 2025-06-05 不在日期里。2026-10-12 的交易当时尚未结束，也没有收进快照。
 
 事件只收录能指出来源的公开报道，并写成摘要。因果说法保持为假设。没有对应公开来源的异动日，页面不补原因。
-
-## 文档对照
-
-仓库里没有 `CONTEXT.md`、`AGENTS.md`、`CLAUDE.md`、术语表、ADR、代码规范或测试规范。实现遵循已经确认的规格 [Issue #1](https://github.com/cozyxiong/trace-stock/issues/1)，以及 [#2](https://github.com/cozyxiong/trace-stock/issues/2)、[#3](https://github.com/cozyxiong/trace-stock/issues/3)、[#4](https://github.com/cozyxiong/trace-stock/issues/4)。这些议题的原文没有改。
-
-早期需求稿把 `relationType`、`exchangeTime`、`mappedTradeDate` 写在事件上，并把 `relatedEventIds` 写在异动上。已确认的规格改成：异动只由价格规则产生。纽约时间和映射交易日由带时区的发布时间、`America/New_York` 和交易日历计算，不手写。事实、观点、时间相关性、因果假设写在 Agent 结论上。事件详情里的相关性判断只说明时间归位，不把事件本身写成原因。
-
-Issue #1 里的虚构一年日历，已经被这份公开日线快照替换。
 
 ## 异动规则
 
